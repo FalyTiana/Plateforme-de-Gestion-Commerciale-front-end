@@ -1,0 +1,53 @@
+.logo{
+    max-width: 100px;
+    margin-bottom: 2rem;
+}
+
+.p{
+    color: var(--seconde-text-color);
+    margin-bottom: 2rem;
+}
+
+.socials{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.a{
+    color: var(--seconde-text-color);
+    border: 1px solid var(--seconde-text-color);
+    padding: 10px 10px;
+    font-size: 1.25rem;
+    border-radius: 100%;
+    transform: all 0.3s ease;
+}
+
+.i{
+    display: flex;
+    align-items: center;
+}
+
+.a:hover{
+    color: #fff;
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+h4{
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.a1{
+    display: block;
+    color: var(--seconde-text-color);
+    margin-bottom: 1rem;
+    transition: all 0.3 ease;
+}
+
+.a1:hover{
+    color: #1d4ed8;
+}
