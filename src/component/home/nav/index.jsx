@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { NavLink } from 'react-router-dom';
 import Logo from '../../logo';
 import ButtonMode from '../../theme-mode/ButtonMode';
 import styles from './Nav.module.css'
@@ -44,7 +45,7 @@ function Nav({ home, features, pricing, about }) {
                 </li>
             </ul>
             <div className={styles.navRight}>
-                <button className="btn">Se Connecter</button>
+                <NavLink to="/se-connecter" className="btn">Se Connecter</NavLink>
                 <ButtonMode />
             </div>
 

@@ -1,6 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { startTransition } from "react";
+import createEntrepriseWithUser from "../api/entreaprise/createWhithUser";
+
+const currencyAbbreviations = {
+    ariary: 'MGA',
+    euro: 'EUR',
+    dollar: 'USD',
+};
 
 export const handleInputChange = (e, formType, setAdminData, setFormData, setEntrepriseData) => {
     const { name, value, type, checked } = e.target;
@@ -15,10 +22,16 @@ export const handleInputChange = (e, formType, setAdminData, setFormData, setEnt
             [name]: type === "checkbox" ? checked : value,
         }));
     } else if (formType === "entreprise") {
-        setEntrepriseData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        setEntrepriseData((prevState) => {
+            const updatedData = {
+                ...prevState,
+                [name]: value,
+            };
+            if (name === 'devise') {
+                updatedData.abreviation_devise = currencyAbbreviations[value];
+            }
+            return updatedData;
+        });
     }
 };
 
@@ -39,43 +52,46 @@ export const validatePasswordForm = (formData, setErrors) => {
     return Object.keys(newErrors).length === 0;
 };
 
-export const handlePasswordSubmit = (e, formData, setErrors, validatePasswordForm,nomEntreprise , navigate) => {
+export const handlePasswordSubmit = async (e, formData, setErrors, validatePasswordForm, entrepriseData, adminData, navigate) => {
     e.preventDefault();
     if (validatePasswordForm(formData, setErrors)) {
-        startTransition(() => {
-            navigate(`/entreprise/${nomEntreprise}/admin`);
-        });
+        // startTransition(() => {
+        //     navigate(`/entreprise/${nomEntreprise}/admin`);
+        // });
 
-        // try {
-        //     // Regroupement des données dans une seule requête
-        //     const combinedData = {
-        //         admin: adminData,
-        //         entreprise: entrepriseData,
-        //         password: formData.password,
-        //     };
+        const entreprise = {
+            nom: entrepriseData.nom,
+            pays: entrepriseData.pays,
+            ville: entrepriseData.ville,
+            devise: entrepriseData.devise,
+            abreviation_devise: entrepriseData.abreviation_devise,
+        };
+        
+        const utilisateur = {
+            nom: adminData.nom,
+            prenom: adminData.prenom,
+            email: adminData.email,
+            telephone: adminData.telephone,
+            mot_de_passe: formData.password,
+            post: 'admin',
+        };
 
-        //     // Requête API pour envoyer toutes les données en une seule fois
-        //     const response = await axios.post('https://your-api-url.com/register', combinedData);
-        //     console.log("Réponse de l'API :", response.data);
-
-        //     // Navigation après la soumission réussie
-        //     startTransition(() => {
-        //         navigate(`/entreprise/${entrepriseData.nom}/admin`);
-        //     });
-        // } catch (error) {
-        //     console.error("Erreur lors de l'envoi des données :", error);
-        // }
+        try {
+            await createEntrepriseWithUser(entreprise, utilisateur);
+            navigate('/success'); // Redirige vers une page de succès après la création
+        } catch (error) {
+            setErrors({ submit: 'Erreur lors de la création de l\'entreprise et de l\'utilisateur.' });
+        }
+        
     }
 };
 
-export const handleAdminSubmit = (e, adminData, setNone) => {
+export const handleAdminSubmit = (e, setNone) => {
     e.preventDefault();
-    console.log("Données administrateur:", adminData);
     setNone(true);
 };
 
-export const handleEntrepriseSubmit = (e, entrepriseData, setActive, none, setNone) => {
+export const handleEntrepriseSubmit = (e, setActive, none, setNone) => {
     e.preventDefault();
-    console.log("Données entreprise:", entrepriseData);
     none? setNone(false) : setActive((prevActive) => !prevActive);
 };

@@ -16,18 +16,14 @@ function Register() {
     const [errors, setErrors] = useState({});
 
     const [formData, setFormData] = useState({ password: '', confirmPassword: '', acceptedTerms: false, });
-    const [entrepriseData, setEntrepriseData] = useState({ nom: '', adresse: '', devise: '' });
+    const [entrepriseData, setEntrepriseData] = useState({ nom: '', pays: '', ville: '', devise: '', abreviation_devise: ''});
     const [adminData, setAdminData] = useState({ nom: '', prenom: '', email: '', telephone: '' });
 
     const navigate = useNavigate();
 
-    const handleNavLinkClick = () => {
-        navigate('/');
-    };
-
     return (
         <div className={styles.register}>
-            <Header handleNavLinkClick={handleNavLinkClick} />
+            <Header/>
             <div className={`${styles.container} ${active && styles.active}`}>
                 <div className={`${styles.formContainer} ${styles.signUp}`}>
                     <button
@@ -41,7 +37,7 @@ function Register() {
                         <AdminForm
                             adminData={adminData}
                             handleInputChange={(e) => handleInputChange(e, "admin", setAdminData, setFormData, setEntrepriseData)}
-                            handleAdminSubmit={(e) => handleAdminSubmit(e, adminData, setNone)}
+                            handleAdminSubmit={(e) => handleAdminSubmit(e, setNone)}
                             none={none}
                             styles={styles}
                         />
@@ -49,7 +45,7 @@ function Register() {
                             formData={formData}
                             errors={errors}
                             handleInputChange={(e) => handleInputChange(e, "form", setAdminData, setFormData, setEntrepriseData)}
-                            handlePasswordSubmit={(e) => handlePasswordSubmit(e, formData, setErrors, validatePasswordForm, entrepriseData.nom, navigate)}
+                            handlePasswordSubmit={(e) => handlePasswordSubmit(e, formData, setErrors, validatePasswordForm, entrepriseData, adminData, navigate)}
                             none={none}
                             styles={styles}
                         />
@@ -62,7 +58,7 @@ function Register() {
                         styles={styles}
                         entrepriseData={entrepriseData}
                         handleInputChange={(e) => handleInputChange(e, "entreprise", setAdminData, setFormData, setEntrepriseData)}
-                        handleEntrepriseSubmit={(e) => handleEntrepriseSubmit(e, entrepriseData, setActive)}
+                        handleEntrepriseSubmit={(e) => handleEntrepriseSubmit(e, setActive)}
                     />
                 </div>
 

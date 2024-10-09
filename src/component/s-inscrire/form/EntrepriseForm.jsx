@@ -5,7 +5,7 @@ function EntrepriseForm({ entrepriseData, handleInputChange, handleEntrepriseSub
         <form className={styles.form} onSubmit={handleEntrepriseSubmit}>
             <h1>Créer un compte</h1>
             <span className={styles.span}>Veuillez saisir les informations de {"l'entreprise"}</span>
-            {["nom", "adresse"].map((field) => (
+            {["nom", "pays", "ville"].map((field) => (
                 <input
                     key={field}
                     className={styles.input}
