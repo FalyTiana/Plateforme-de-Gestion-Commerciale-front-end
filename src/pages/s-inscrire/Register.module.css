@@ -132,7 +132,7 @@
     z-index: 2;
 }
 
-.container.active .sign-in {
+.container.active .signIn {
     transform: translateX(100%);
 }
 

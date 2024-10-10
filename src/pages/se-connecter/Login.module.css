@@ -18,46 +18,126 @@
     box-shadow: 0 5px 15px var(--shadow-color);
     position: relative;
     overflow: hidden;
-    max-width: 400px;
-    width: 80%;
+    width: 768px;
+    max-width: 100%;
     min-height: 480px;
+    text-align: center;
 }
 
-.from {
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+.container span{
+    font-size: 12px;
+    margin: 20px 0;
+}
+
+.container a{
+    color: var(--text-color-dark);
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.container form{
     background-color: var(--container-bg-color);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 3rem;
+    padding: 0 40px;
     height: 100%;
 }
 
-.login .from h1 {
-    line-height: 1;
-    margin: 1rem 0;
-}
-
-.login p {
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.3px;
-    text-align: center;
-}
-
-.login form{
-    max-width: 250px;
-}
-
-.login input {
+.container input{
     background-color: var(--input-bg-color);
     color: var(--text-color);
     border: none;
-    margin: 5px 0;
+    margin: 8px 0;
     padding: 10px 15px;
     font-size: 13px;
     border-radius: 8px;
     width: 100%;
     outline: none;
-    appearance: none;
+}
+
+.input::placeholder{
+    color : var(--input-placeholder-color)
+}
+
+.formContainer{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.error {
+    width: 100%;
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+    color: var(--error-color);
+}
+
+.toggleContainer{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.toggle{
+    background-color: var(--toggle-bg-color);
+    background: linear-gradient(to right, var(--toggle-gradient-start), var(--toggle-gradient-end));
+    color: var(--btn-text-color);
+    height: 100%;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.togglePanel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    right: 0;
+    transform: translateX(0);
+}
+
+@media (width< 600px){
+    .toggleContainer{
+        display: none;
+    }
+    .formContainer{
+        width: 100%;
+    }
+    .container{
+        max-width: 350px;
+        width: 80%;
+    }
+    .form{
+        padding: 0 2rem;
+    }
 }

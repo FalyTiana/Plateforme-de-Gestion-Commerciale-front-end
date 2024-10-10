@@ -8,6 +8,7 @@ import PasswordForm from "../../component/s-inscrire/form/PasswordForm";
 import EntrepriseForm from "../../component/s-inscrire/form/EntrepriseForm";
 import TogglePanel from "../../component/s-inscrire/TogglePanel";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 
 function Register() {
 
@@ -20,6 +21,7 @@ function Register() {
     const [adminData, setAdminData] = useState({ nom: '', prenom: '', email: '', telephone: '' });
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     return (
         <div className={styles.register}>
@@ -45,7 +47,7 @@ function Register() {
                             formData={formData}
                             errors={errors}
                             handleInputChange={(e) => handleInputChange(e, "form", setAdminData, setFormData, setEntrepriseData)}
-                            handlePasswordSubmit={(e) => handlePasswordSubmit(e, formData, setErrors, validatePasswordForm, entrepriseData, adminData, navigate)}
+                            handlePasswordSubmit={(e) => handlePasswordSubmit(e, formData, setErrors, validatePasswordForm, entrepriseData, adminData, navigate, dispatch)}
                             none={none}
                             styles={styles}
                         />

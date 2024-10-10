@@ -52,12 +52,9 @@ export const validatePasswordForm = (formData, setErrors) => {
     return Object.keys(newErrors).length === 0;
 };
 
-export const handlePasswordSubmit = async (e, formData, setErrors, validatePasswordForm, entrepriseData, adminData, navigate) => {
+export const handlePasswordSubmit = async (e, formData, setErrors, validatePasswordForm, entrepriseData, adminData, navigate, dispatch) => {
     e.preventDefault();
     if (validatePasswordForm(formData, setErrors)) {
-        // startTransition(() => {
-        //     navigate(`/entreprise/${nomEntreprise}/admin`);
-        // });
 
         const entreprise = {
             nom: entrepriseData.nom,
@@ -75,10 +72,13 @@ export const handlePasswordSubmit = async (e, formData, setErrors, validatePassw
             mot_de_passe: formData.password,
             post: 'admin',
         };
+        
+        
 
         try {
-            await createEntrepriseWithUser(entreprise, utilisateur);
-            navigate('/success'); // Redirige vers une page de succès après la création
+            await createEntrepriseWithUser(entreprise, utilisateur, dispatch);
+            
+            navigate('/se-connecter'); // Redirige vers une page de succès après la création
         } catch (error) {
             setErrors({ submit: 'Erreur lors de la création de l\'entreprise et de l\'utilisateur.' });
         }

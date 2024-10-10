@@ -1,9 +1,11 @@
 import axios from 'axios';
 import urlBase from '../url';
+import { setLoading } from '../../redux/slices/loadingSlice';
+import { showSuccess, showError } from '../../redux/slices/alertSlice';
 
-const createEntrepriseWithUser = async (entreprise, utilisateur) => {
-
-    console.log(entreprise);
+const createEntrepriseWithUser = async (entreprise, utilisateur, dispatch) => {
+    
+    dispatch(setLoading(true));
     
     if (!entreprise || !utilisateur) {
         throw new Error('Les informations de l\'entreprise ou de l\'utilisateur sont manquantes.');
@@ -24,40 +26,17 @@ const createEntrepriseWithUser = async (entreprise, utilisateur) => {
             utilisateur_post: utilisateur.post || '',
         });
 
-        console.log('Entreprise et utilisateur créés avec succès:', response.data);
+        dispatch(showSuccess(response.data.message || 'Création réussie.'));
         return response.data;
     } catch (error) {
-        if (error.response) {
-            console.error('Erreur lors de la création de l\'entreprise et de l\'utilisateur:', error.response.data);
-        } else {
-            console.error('Erreur de connexion ou autre problème:', error.message);
-        }
-        throw error;
+        
+        const errorMessage = error.response?.data?.message || 'Une erreur s\'est produite lors de la création.';
+        dispatch(showError(errorMessage));
+        
+        throw error; // Optional: rethrow if you want to handle it further up the call stack
+    } finally {
+        dispatch(setLoading(false));
     }
 };
 
 export default createEntrepriseWithUser;
-
-
-
-
-// Exemple d'utilisation de la fonction
-// const entrepriseData = {
-//     nom: 'Nom de l\'entreprise',
-//     pays: 'Pays',
-//     ville: 'Ville',
-//     numero_adresse: '123',
-//     devise: 'Devise',
-//     abreviation_devise: 'DEV',
-// };
-
-// const utilisateurData = {
-//     nom: 'Nom de l\'utilisateur',
-//     prenom: 'Prénom',
-//     email: 'email@example.com',
-//     telephone: '0123456789',
-//     mot_de_passe: 'motdepasse',
-//     post: 'Poste',
-// };
-
-// createEntrepriseWithUser(entrepriseData, utilisateurData);
