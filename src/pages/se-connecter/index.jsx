@@ -36,7 +36,6 @@ function Login() {
 
   useEffect(()=>{
     if (user.user && user.token){
-      console.log(user)
       navigate(`/entreprise/${user.user.entreprise.nom}/${user.user.post}`)
     }
     

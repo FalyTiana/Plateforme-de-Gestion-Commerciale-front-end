@@ -1,0 +1,32 @@
+.body {
+    background: var(--grey);
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.content {
+    position: relative;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+}
+
+.content.close{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.content main {
+    margin-top: 56px;
+    width: 100%;
+    padding: 36px 24px;
+    min-height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 768px){
+    .content {
+        width: calc(100% - 60px);
+        left: 200px;
+    }
+}

@@ -1,0 +1,28 @@
+.taskTitle {
+    display: flex;
+    align-items: center;
+}
+
+.taskTitle p {
+    margin-left: 6px;
+}
+
+.bx {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+li.completed {
+    border-left: 10px solid var(--success);
+}
+
+li.notCompleted {
+    border-left: 10px solid var(--danger);
+}
+
+li:last-child {
+    margin-bottom: 0;
+}

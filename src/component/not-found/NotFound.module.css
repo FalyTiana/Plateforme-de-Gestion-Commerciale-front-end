@@ -5,19 +5,24 @@
     justify-content: center;
     height: 100vh;
     text-align: center;
-    background-color: #f0f0f5;
+    background-color: var(--grey);
     padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    width: 100vw;
 }
 
 .title {
     font-size: 5rem;
-    color: #333;
+    color: var(--text-color);
     margin: 0;
 }
 
 .message {
     font-size: 1.5rem;
-    color: #555;
+    color: var(--seconde-text-color);
     margin: 10px 0 20px;
 }
 

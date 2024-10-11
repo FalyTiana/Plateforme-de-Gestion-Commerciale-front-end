@@ -1,0 +1,43 @@
+.bx {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    margin-bottom: 24px;
+}
+
+.header h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header .bx {
+    cursor: pointer;
+}
+
+.reminders {
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+.reminders .taskList {
+    width: 100%;
+}
+
+.taskList li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: var(--grey);
+    padding: 14px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
