@@ -7,7 +7,7 @@ import RecentReminders from '../../../../component/entreprise/recentRemiders';
 function Admin() {
   return (
     <>
-      <Header />
+      <Header title={"Tableau de bord"} breadcrumb={null}/>
       <Insights/>
       <div className={styles.bottomData}>
         <RecentOrders/>

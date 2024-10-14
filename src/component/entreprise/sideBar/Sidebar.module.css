@@ -20,6 +20,7 @@
     overflow-x: hidden;
     scrollbar-width: none;
     transition: all 0.3s ease;
+    padding-bottom: 52px;
 }
 
 .sidebar::-webkit-scrollbar {

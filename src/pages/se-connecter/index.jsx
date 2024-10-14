@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import Header from "../../component/s-inscrire/header";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -12,7 +13,7 @@ function Login() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const navigate = useNavigate()
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,12 +35,12 @@ function Login() {
     setError("");
   };
 
-  useEffect(()=>{
-    if (user.user && user.token){
+  useEffect(() => {
+    if (user.user && user.token) {
       navigate(`/entreprise/${user.user.entreprise.nom}/${user.user.post}`)
     }
-    
-  },[user, navigate])
+
+  }, [user, navigate])
 
   return (
     <div className={styles.login}>
@@ -79,9 +80,9 @@ function Login() {
             <div className={styles.togglePanel}>
               <h1>Accès réservé</h1>
               <p>
-                Cette zone est strictement réservée aux employés de
+                {`Cette zone est strictement réservée aux employés de
                 l'entreprise. Si vous n'êtes pas employé, vous ne pouvez pas
-                vous connecter.
+                vous connecter.`}
               </p>
             </div>
           </div>

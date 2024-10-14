@@ -17,15 +17,24 @@
     display: flex;
     align-items: center;
     grid-gap: 16px;
+    /* flex-wrap: wrap; */
 }
 
 .header .left .breadcrumb li {
     color: var(--dark);
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .header .left .breadcrumb li a {
     color: var(--dark-grey);
-    pointer-events: none;
+    /* pointer-events: none; */
+    padding-right: 16px;
+    cursor: pointer;
+}
+
+.header .left .breadcrumb li a:hover {
+    color: var(--text-color);
 }
 
 .header .left .breadcrumb li a.active {

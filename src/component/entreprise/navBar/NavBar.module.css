@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.bxMenu{
+.bxMenu {
     cursor: pointer;
     color: var(--dark);
 }
@@ -24,13 +24,15 @@
     width: calc(100% - 230px);
     z-index: 100;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 1px var(--grey);
 }
 
-.nav.close{
+.nav.close {
     left: 60px;
     width: calc(100% - 60px);
 }
-.div{
+
+.div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,7 +120,16 @@
     border-radius: 50%;
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 768px) {
+
+    .nav {
+        left: 200px;
+        width: calc(100% - 200px);
+    }
+
+}
+
+@media screen and (max-width: 576px) {
 
     .nav form .formInput input {
         display: none;

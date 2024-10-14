@@ -168,6 +168,7 @@ body {
   font-size: 0.8rem;
   text-align: center;
   position: absolute;
+  z-index: 9999999999999999 !important;
   bottom: 0;
 }
 
@@ -175,6 +176,11 @@ body {
   background: var(--light-primary) !important;
   color: var(--primary) !important;
   position: relative !important;
+}
+
+.breadcrumb .active {
+  color: var(--primary) !important;
+  pointer-events: none !important;
 }
 
 @media (width < 450px) {
