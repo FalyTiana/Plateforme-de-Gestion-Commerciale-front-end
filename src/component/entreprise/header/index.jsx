@@ -14,7 +14,7 @@ const Header = ({ title, breadcrumb }) => {
             // Récupérer tous les enfants du conteneur qui ont la classe 'active'
             const activeElements = breadcrumbRef.current.querySelectorAll('.active');
 
-            if (activeElements.length === 2) {
+            if (activeElements.length >= 2) {
                 // Si 2 éléments ont la classe 'active', retirer la classe 'active' du premier
                 activeElements[0].classList.remove('active');
             }

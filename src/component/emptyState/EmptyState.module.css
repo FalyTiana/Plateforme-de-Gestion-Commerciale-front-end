@@ -1,0 +1,21 @@
+.emptyStateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 100px;
+    /* Ajustez la taille de l'icône */
+    color: var(--seconde-text-color);
+    /* Couleur de l'icône, vous pouvez la personnaliser */
+    margin-bottom: 20px;
+}
+
+.emptyMessage {
+    font-size: 1.5rem;
+    color: var(--seconde-text-color);
+}

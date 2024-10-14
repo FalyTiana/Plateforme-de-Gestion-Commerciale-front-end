@@ -3,6 +3,10 @@ import Header from "../../../../../component/entreprise/header"
 import { breadcrumbItemsBoutique } from "../../../../../utils/breadcrumbItems"
 import styles from "./Shop.module.css"
 import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
+import { formatNumber } from "../../../../../utils/formatNumber";
+import ButtonBasket from "../../../../../component/entreprise/shop/pannier/buttonBasket";
+import EmptyState from "../../../../../component/emptyState";
 
 function Shop() {
 
@@ -10,6 +14,8 @@ function Shop() {
     const products = useSelector((state) => state.products.products);
     const [filteredProducts, setFilteredProducts] = useState(products || []);
     const [category, setCategory] = useState('');
+    const navigate = useNavigate()
+    const location = useLocation()
 
     // Recherche de produits
     const handleSearch = () => {
@@ -38,11 +44,16 @@ function Shop() {
         }
     };
 
+    const handleProductClick = (product) => {
+        navigate(`${location.pathname}/produit`, { state: { product } })
+    }
+
     return (
         <>
             <Header title={"Boutique"} breadcrumb={breadcrumbItemsBoutique} />
             <div className={styles.container}>
                 <h1 className={styles.title}>Notre Boutique</h1>
+                <ButtonBasket />
 
                 <div className={styles.searchContainer}>
                     <input
@@ -71,37 +82,31 @@ function Shop() {
                     </select>
                 </div>
 
-                {/* {filteredProducts && filteredProducts.length === 0 ? (
+                {filteredProducts && filteredProducts.length === 0 ? (
                     <EmptyState message="Aucun produit trouvé." />
-                ) :  */}
-                {/* Grille des produits */}
-                <div className={styles.productsGrid}>
-                    {filteredProducts.map(product => (
-                        // <div
-                        //     key={product.id}
-                        //     className={styles.productCard}
-                        //     onClick={() => handleProductClick(product.id)}
-                        // >
-                        <div
-                            key={product.id}
-                            className={styles.productCard}
-                        >
-                            <img src={product.image} alt={product.name} className={styles.productImage} />
-                            <h3>{product.name}</h3>
-                            <p>{product.price} €</p>
-                            {/* <button
+                ) :
+                    (/* Grille des produits */
+                        <div className={styles.productsGrid}>
+                            {filteredProducts.map(product => (
+                                <div
+                                    key={product.id}
+                                    className={styles.productCard}
+                                    onClick={() => handleProductClick(product)}
+                                >
+                                    <img src={product.image} alt={product.name} className={styles.productImage} />
+                                    <h3>{product.name}</h3>
+                                    <p>{formatNumber(product.price)} Ar</p>
+                                    {/* <button
                                 onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
                                 className={styles.addToCartButton}
                             > */}
-                                <button
-                                className={styles.addToCartButton}
-                            >
-                                Ajouter au panier
-                            </button>
+                                    <button className={styles.addToCartButton}>
+                                        Ajouter au panier
+                                    </button>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-         {/* )} */}
+                    )}
             </div>
         </>
     )

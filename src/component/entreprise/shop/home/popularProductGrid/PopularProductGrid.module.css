@@ -55,7 +55,7 @@
 
 .productCard p {
     color: var(--error-color);
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.1rem;
 }
 

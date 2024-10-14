@@ -1,5 +1,6 @@
 .container{
     margin-top: 36px;
+    padding-bottom: 36px;
     background: var(--light);
     width: 100%;
     min-width: 296px;
@@ -110,7 +111,7 @@
 
 .productCard p {
     color: var(--error-color);
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.1rem;
     margin-bottom: 20px;
 }

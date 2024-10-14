@@ -7,6 +7,7 @@ import loadingReducer from "./slices/loadingSlice";
 import alertReducer from "./slices/alertSlice";
 import userReducer from "./slices/userSlice";
 import productsReducer from "./slices/productSlice"
+import cartReducer from "./slices/cartSlice"
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 // Configuration pour persister userSlice
@@ -18,6 +19,15 @@ const userPersistConfig = {
 // Création du reducer persistant pour userSlice
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
 
+// Configuration pour persister userSlice
+const cartPersistConfig = {
+    key: "cart",
+    storage, // Utilise localStorage
+};
+
+// Création du reducer persistant pour cartSlice
+const persistedCardReducer = persistReducer(cartPersistConfig, cartReducer);
+
 // Configuration du store avec le middleware qui ignore les actions non sérialisables de redux-persist
 const mainStore = configureStore({
     reducer: {
@@ -27,6 +37,7 @@ const mainStore = configureStore({
         alert: alertReducer,
         products : productsReducer,
         user: persistedUserReducer, // Utilise le reducer persistant pour user
+        cart: persistedCardReducer, // Utilise le reducer persistant pour cart
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

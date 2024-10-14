@@ -1,9 +1,16 @@
 import { useSelector } from "react-redux";
 import styles from "./PopularProductGrid.module.css"
+import { formatNumber } from "../../../../../utils/formatNumber";
+import { useLocation, useNavigate } from "react-router";
 
 function PopularProductGrid() {
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const products = useSelector((state) => state.products.products);
+    const handleProductClick = (product) =>{
+        navigate (`${location.pathname}/boutique/produit`, { state: {product} })
+    }
 
     return (
         <section className={styles.section}>
@@ -11,19 +18,16 @@ function PopularProductGrid() {
                 <p>Découvrez certains de nos best-sellers que nos clients adorent.</p>
                 <div className={styles.productsGrid}>
                     {products.map((product) => (
-                        // <div
-                        //     key={product.id}
-                        //     className={styles.productCard}
-                        //     onClick={() => handleProductClick(product.id)}
-                        // >
                         <div
                             key={product.id}
                             className={styles.productCard}
+                            onClick={() => handleProductClick(product)}
                         >
+                        
 
                             <img src={product.image} alt={product.name} />
                             <h3>{product.name}</h3>
-                            <p>{product.price} Ar</p>
+                            <p>{formatNumber(product.price)} Ar</p>
                             {/* <button
                                 onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
                             > */}

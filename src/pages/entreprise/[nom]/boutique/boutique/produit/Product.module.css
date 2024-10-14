@@ -1,0 +1,84 @@
+.container{
+    margin-top: 36px;
+    padding-bottom: 36px;
+    background: var(--light);
+    width: 100%;
+    min-width: 296px;
+    flex-grow: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    color: var(--dark);
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+    color: var(--dark);
+}
+
+.container .productContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    color: var(--dark);
+    padding: 15px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 800px;
+}
+.productContainer img{
+    width: 100%;
+    max-width: 300px;
+    min-width: 100px;
+    border-radius: 5%;
+    height: auto;
+}
+
+.productContainer ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px;
+    margin-left: 15px;
+    flex-grow: 1; 
+}
+
+.productContainer ul span{
+    padding-left: 15px;
+    text-transform: capitalize;
+}
+
+.descrption{
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 15px;
+}
+
+.buttonContainer{
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container button{
+    padding: 10px 20px;
+    background-color: var(--primary);
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #1d4ed8;
+}
