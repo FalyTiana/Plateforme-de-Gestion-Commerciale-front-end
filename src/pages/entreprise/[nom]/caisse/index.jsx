@@ -1,5 +1,5 @@
-import Header from "../../../../../component/entreprise/header"
-import { breadcrumbItemsBoutique } from "../../../../../utils/breadcrumbItems"
+import Header from "../../../../component/entreprise/header"
+import { breadcrumbItemsBoutique } from "../../../../utils/breadcrumbItems"
 
 
 function Caisse() {

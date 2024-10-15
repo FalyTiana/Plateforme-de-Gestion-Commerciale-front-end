@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Header from "../../../../../component/entreprise/header"
 import { breadcrumbItemsBoutique } from "../../../../../utils/breadcrumbItems"
 import styles from "./Shop.module.css"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import { formatNumber } from "../../../../../utils/formatNumber";
 import ButtonBasket from "../../../../../component/entreprise/shop/pannier/buttonBasket";
 import EmptyState from "../../../../../component/emptyState";
+import { addToCart } from "../../../../../redux/slices/cartSlice"
 
 function Shop() {
 
@@ -16,6 +17,7 @@ function Shop() {
     const [category, setCategory] = useState('');
     const navigate = useNavigate()
     const location = useLocation()
+    const dispatch = useDispatch()
 
     // Recherche de produits
     const handleSearch = () => {
@@ -47,6 +49,11 @@ function Shop() {
     const handleProductClick = (product) => {
         navigate(`${location.pathname}/produit`, { state: { product } })
     }
+
+    // Ajouter un produit au panier
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product));
+    };
 
     return (
         <>
@@ -96,11 +103,10 @@ function Shop() {
                                     <img src={product.image} alt={product.name} className={styles.productImage} />
                                     <h3>{product.name}</h3>
                                     <p>{formatNumber(product.price)} Ar</p>
-                                    {/* <button
-                                onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
-                                className={styles.addToCartButton}
-                            > */}
-                                    <button className={styles.addToCartButton}>
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
+                                        className={styles.addToCartButton}
+                                    >
                                         Ajouter au panier
                                     </button>
                                 </div>

@@ -10,12 +10,12 @@
 .emptyIcon {
     font-size: 100px;
     /* Ajustez la taille de l'icône */
-    color: var(--seconde-text-color);
+    color: var(--input-bg-color);
     /* Couleur de l'icône, vous pouvez la personnaliser */
     margin-bottom: 20px;
 }
 
 .emptyMessage {
     font-size: 1.5rem;
-    color: var(--seconde-text-color);
+    color: var(--input-placeholder-color);
 }
