@@ -2,10 +2,8 @@
     position: fixed;
     top: 50%;
     right: 24px;
-    color: var(--primary);
     background-color: var(--grey);
     padding: 15px;
-    font-size: 1.2rem;
     border-top-left-radius: 100%;
     border-bottom-left-radius: 100%;
     width: 50px;
@@ -13,6 +11,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+.icon{
+    font-size: 2.2rem;
+    color: var(--error-color);
+}
+
+.buttonPanier:hover .icon,
+.buttonPanier:hover .numContainer p{
+    transform: scale(1.1);
+}
+.numContainer{
+    position: relative;
+}
+
+.numContainer p{
+    position: absolute;
+    top: -22px;
+    right: 0px;
+    color: var(--error-color);
+    font-size: small;
 }
 
 @media screen and (max-width: 422px){

@@ -2,15 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "../../../../../component/entreprise/header"
 import { breadcrumbItemsBoutique } from "../../../../../utils/breadcrumbItems"
 import styles from "./Basket.module.css"
-// import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { clearCart, removeFromCart, updateQuantity } from "../../../../../redux/slices/cartSlice";
 import EmptyState from "../../../../../component/emptyState";
 import { formatNumber } from "../../../../../utils/formatNumber";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 function Basket() {
 
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const navigate = useNavigate()
+    const param = useParams()
 
     // Sélectionner les articles du panier et les infos du panier depuis Redux
     const cartItems = useSelector((state) => state.cart.cartItems);
@@ -52,7 +54,7 @@ function Basket() {
                                     <th>Prix (Ar)</th>
                                     <th>Quantité</th>
                                     <th>Total (Ar)</th>
-                                    <th>Action</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,7 +82,7 @@ function Basket() {
                                                 onClick={() => handleRemove(item.id)}
                                                 className={styles.removeButton}
                                             >
-                                                Retirer
+                                                <FaRegTrashAlt />
                                             </button>
                                         </td>
                                     </tr>
@@ -90,20 +92,31 @@ function Basket() {
 
                         {/* Total */}
                         <div className={styles.cartSummary}>
-                            <p>Total des articles: {totalQuantity}</p>
-                            <p>Total à payer: {formatNumber(Number(totalPrice).toFixed(2))} Ar</p>  {/* Assurez-vous que totalPrice est bien un nombre */}
-                            <button
-                                onClick={handleClearCart}
-                                className={styles.clearCartButton}
-                            >
-                                Vider le panier
-                            </button>
-                            <button
-                                // onClick={() => navigate('/checkout')}
-                                className={styles.checkoutButton}
-                            >
-                                Procéder au paiement
-                            </button>
+                            <div className={styles.textContainer}>
+                                <p>Total des articles : {totalQuantity}</p>
+                                <p>Total à payer : {formatNumber(Number(totalPrice).toFixed(2))} Ar</p>  {/* Assurez-vous que totalPrice est bien un nombre */}
+                            </div>
+                            <div className={styles.buttonContainer}>
+                                <button
+                                    onClick={() => navigate(`/entreprise/${param.nom}/boutique/boutique`)}
+                                    className={styles.returnButton}
+                                >
+                                    Retour à la boutique
+                                </button>
+                                <button
+                                    // onClick={() => navigate('/checkout')}
+                                    className={styles.checkoutButton}
+                                >
+                                    Procéder au paiement
+                                </button>
+                                <button
+                                    onClick={handleClearCart}
+                                    className={styles.clearCartButton}
+                                >
+                                    Vider le panier
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 )}

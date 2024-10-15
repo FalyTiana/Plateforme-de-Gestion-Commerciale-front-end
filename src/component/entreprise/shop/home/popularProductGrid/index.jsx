@@ -1,16 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./PopularProductGrid.module.css"
 import { formatNumber } from "../../../../../utils/formatNumber";
 import { useLocation, useNavigate } from "react-router";
+import { addToCart } from "../../../../../redux/slices/cartSlice";
 
 function PopularProductGrid() {
     const navigate = useNavigate()
     const location = useLocation()
+    const dispatch = useDispatch()
 
     const products = useSelector((state) => state.products.products);
     const handleProductClick = (product) =>{
         navigate (`${location.pathname}/boutique/produit`, { state: {product} })
     }
+
+    // Ajouter un produit au panier
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product));
+    };
 
     return (
         <section className={styles.section}>
@@ -28,10 +35,9 @@ function PopularProductGrid() {
                             <img src={product.image} alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{formatNumber(product.price)} Ar</p>
-                            {/* <button
+                            <button
                                 onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
-                            > */}
-                            <button>
+                            >
                                 Ajouter au panier
                             </button>
                         </div>

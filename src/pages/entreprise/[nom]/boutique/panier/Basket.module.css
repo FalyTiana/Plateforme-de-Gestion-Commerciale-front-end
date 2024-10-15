@@ -33,15 +33,24 @@
 
 .cartTable th,
 .cartTable td {
-    padding: 10px;
+    padding: 10px 5px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--input-placeholder-color);
 }
 
-.cartTable th:first-child,
+.cartTable th:first-child{
+    text-align: start;
+}
+
 .cartTable td div {
     display: flex;
     align-items: center;
+}
+
+.cartTable th:first-child{
+    font-size: large;
+    align-items: start;
+    flex-direction: column;
 }
 
 .cartImage {
@@ -55,27 +64,51 @@
     text-align: center;
     margin: auto;
     padding: 10px 0;
+    padding-left: 15px;
+    background-color: var(--input-bg-color);
+    color: var(--dark);
+    border-radius: 5px;
 }
 
-.removeButton,
+.removeButton {
+    color: var(--danger);
+    font-size: large;
+    cursor: pointer;
+    background-color: transparent;
+}
 .clearCartButton,
-.checkoutButton {
+.checkoutButton,
+.returnButton {
     background-color: #ff6347;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-.removeButton:hover,
-.clearCartButton:hover,
+.checkoutButton {
+    background-color: var(--success);
+}
+
+.returnButton{
+    background-color: var(--primary);
+}
+
+.returnButton:hover{
+    background-color: #1d4ed8;
+}
+
+.removeButton:hover{
+    transform: scale(1.1);
+}
 .checkoutButton:hover {
+    background-color: #1b581e;
+}
+.clearCartButton:hover{
     background-color: #e5533d;
 }
 
-.clearCartButton {
-    margin-right: 5px;
-}
 
 .cartSummary {
     text-align: right;
@@ -84,4 +117,20 @@
 
 .cartSummary p {
     margin-bottom: 10px;
+}
+.cartSummary .textContainer{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: start;
+    margin-left: auto;
+}
+
+.cartSummary .buttonContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    justify-content: end;
+    margin-left: auto;
+    gap: 10px 5px;
 }

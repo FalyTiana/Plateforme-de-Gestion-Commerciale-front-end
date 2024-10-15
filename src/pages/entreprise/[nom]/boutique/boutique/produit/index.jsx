@@ -4,6 +4,8 @@ import { breadcrumbItemsBoutique } from "../../../../../../utils/breadcrumbItems
 import Header from "../../../../../../component/entreprise/header";
 import { formatNumber } from "../../../../../../utils/formatNumber";
 import ButtonBasket from "../../../../../../component/entreprise/shop/pannier/buttonBasket";
+import { addToCart } from "../../../../../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 function Product() {
 
@@ -11,6 +13,7 @@ function Product() {
     const location = useLocation();
     const navigate = useNavigate();
     const param = useParams();
+    const dispatch = useDispatch();
 
     // Accès aux données envoyées
     const { product } = location.state || {};
@@ -19,12 +22,16 @@ function Product() {
         navigate(`/entreprise/${param.nom}/boutique/boutique`)
     }
 
+    const handleAddToCart = () => {
+        dispatch(addToCart(product));
+    };
+
 
     return (
         <>
             <Header title={"Boutique"} breadcrumb={newBeadcrumItems} />
             <div className={styles.container}>
-            <ButtonBasket/>
+                <ButtonBasket />
                 <h1>Produit</h1>
                 <div className={styles.productContainer}>
                     <img src={product.image} alt="" />
@@ -40,11 +47,13 @@ function Product() {
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, voluptates voluptatibus. Delectus labore eligendi provident qui? Alias ipsum sit quisquam quod similique quaerat corporis, doloremque sequi, a ducimus, quis commodi?
                     </p>
                 </div>
-                <div className={styles.buttonContainer}>
+                <div
+                    onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
+                    className={styles.buttonContainer}>
                     <button>
                         Ajouter au panier
                     </button>
-                    <button onClick={()=>navigate(`/entreprise/${param.nom}/boutique/boutique`)}>
+                    <button onClick={() => navigate(`/entreprise/${param.nom}/boutique/boutique`)}>
                         Retour à la boutique
                     </button>
                 </div>
