@@ -6,6 +6,7 @@ import { formatNumber } from "../../../../../../utils/formatNumber";
 import ButtonBasket from "../../../../../../component/entreprise/shop/pannier/buttonBasket";
 import { addToCart } from "../../../../../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { capitalizeFirstLetter } from "../../../../../../utils/capitalizeLetter";
 
 function Product() {
 
@@ -36,8 +37,8 @@ function Product() {
                 <div className={styles.productContainer}>
                     <img src={product.image} alt="" />
                     <ul>
-                        <li> <h3>Nom du produit</h3><span> {product.name}</span></li>
-                        <li> <h3>Categorie</h3> <span> {product.category}</span> </li>
+                        <li> <h3>Nom du produit</h3><span> {capitalizeFirstLetter(`${product.name}`)}</span></li>
+                        <li> <h3>Categorie</h3> <span> {capitalizeFirstLetter(`${product.category}`)}</span> </li>
                         <li> <h3>Prix</h3> <span> {formatNumber(product.price)} Ar</span></li>
                     </ul>
                 </div>

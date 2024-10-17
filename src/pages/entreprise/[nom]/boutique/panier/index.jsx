@@ -44,7 +44,15 @@ function Basket() {
 
                 {/* Si le panier est vide */}
                 {cartItems.length === 0 ? (
-                    <EmptyState message={"Votre panier est vide."} />
+                    <>
+                        <EmptyState message={"Votre panier est vide."} />
+                        <button
+                            onClick={() => navigate(`/entreprise/${param.nom}/boutique/boutique`)}
+                            className={styles.returnButton}
+                        >
+                            Retour à la boutique
+                        </button>
+                    </>
                 ) : (
                     <div className={styles.tableContainer}>
                         <table className={styles.cartTable}>

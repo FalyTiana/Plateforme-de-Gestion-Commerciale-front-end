@@ -6,6 +6,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Logo from "../../logo";
+import { SiProducthunt } from "react-icons/si";
 
 const Sidebar = ({ menuClose }) => {
     const user = useSelector((state) => state.user);
@@ -31,6 +32,7 @@ const Sidebar = ({ menuClose }) => {
     const menuItems = [
         { icon: <BiSolidDashboard />, label: 'Tableau de bord', path: `/entreprise/${nom}/admin` },
         { icon: <BiStoreAlt />, label: 'Boutique', path: `/entreprise/${nom}/boutique` },
+        { icon: <SiProducthunt />, label: 'Produit', path: `/entreprise/${nom}/produit` },
         { icon: <BiAnalyse />, label: 'Analytique', path: `/entreprise/${nom}/analytique` },
         { icon: <BiMessageSquareDots />, label: 'Tickets', path: `/entreprise/${nom}/tickets` },
         { icon: <BiGroup />, label: 'Utilisateur', path: `/entreprise/${nom}/utilisateur` },

@@ -1,0 +1,22 @@
+.filterContainer {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.filterContainer label{
+    color: var(--text-color-dark);
+}
+
+.categorySelect {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-left: 10px;
+    color: var(--text-color-dark);
+    background-color: var(--grey);
+    cursor: pointer;
+}
+
+.categorySelect option{
+    cursor: pointer;
+}

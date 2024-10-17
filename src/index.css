@@ -112,6 +112,7 @@
 img {
   width: 100%;
   display: flex;
+  border-radius: 5px;
 }
 
 a {
