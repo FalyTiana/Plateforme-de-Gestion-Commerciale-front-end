@@ -1,0 +1,66 @@
+.productsList{
+    margin-top: 40px;
+    width: 100%;
+    padding: 0 25px;
+    overflow-x: auto;
+}
+
+.productsList tbody{
+    border-top: 1px solid var(--input-placeholder-color);
+}
+
+.productList{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.productList td{
+    margin: 0;
+    padding: 10px 5px;
+    text-align: center;
+    border-bottom: 1px solid var(--input-placeholder-color);
+    color: var(--dark);
+    transform: scale(1.01);
+}
+
+.productList:first-child td{
+    border-top: 1px solid var(--input-placeholder-color);
+}
+
+.productList:hover td{
+    transform: scale(1.05);
+}
+
+
+.productList td div {
+    display: flex;
+    align-items: center;
+}
+
+.productImage{
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 15%;
+}
+
+.addToCartButton{
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--dark);
+    color: var(--dark);
+    border-radius: 5px;
+}
+
+.addToCartButton:hover{
+    background-color: var(--primary);
+    border: none;
+    color: #fff;
+}
+
+.category{
+    text-align: start;
+}

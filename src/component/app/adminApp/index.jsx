@@ -6,6 +6,7 @@ import Sidebar from '../../entreprise/sideBar';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import Copyright from '../../copyright';
+import Alert from '../../alert';
 
 
 function AdminApp({ routing }) {
@@ -53,6 +54,7 @@ function AdminApp({ routing }) {
           </main>
         </div>
       </div>
+      <Alert />
       <Copyright />
     </>
   );
