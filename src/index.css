@@ -189,3 +189,27 @@ body {
     padding: 0.5rem 1rem;
   }
 }
+
+.ql-editor.ql-blank::before {
+  color: var(--input-placeholder-color) !important;
+  font-style: normal !important;
+}
+
+.ql-toolbar.ql-snow{
+  color: var(--seconde-text-color) !important;
+  border-color: var(--input-placeholder-color) !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.ql-container.ql-snow{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-color: var(--input-placeholder-color) !important;
+  min-height: 150px;
+}
+
+.ql-snow .ql-tooltip{
+  left: 10px !important;
+}

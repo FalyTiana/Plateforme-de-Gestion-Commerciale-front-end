@@ -106,7 +106,10 @@ export const handleAdminSubmit = (e, setNone) => {
   setNone(true);
 };
 
-export const handleEntrepriseSubmit = (e, setActive, none, setNone) => {
+export const handleEntrepriseSubmit = (e, setActive, active, none, setNone) => {
   e.preventDefault();
-  none ? setNone(false) : setActive((prevActive) => !prevActive);
+  console.log('====================================')
+  console.log("ato")
+  console.log('====================================')
+  none ? setNone(false) : setActive((active) => !active);
 };

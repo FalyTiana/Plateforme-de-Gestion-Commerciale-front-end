@@ -6,6 +6,9 @@ function Caisse() {
     return (
         <>
         <Header title={"Boutique"} breadcrumb={breadcrumbItemsBoutique}/>
+        <div>
+
+        </div>
         </>
     )
 }

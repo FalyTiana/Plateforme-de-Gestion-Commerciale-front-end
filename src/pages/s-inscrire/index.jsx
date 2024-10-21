@@ -64,7 +64,7 @@ function Register() {
                     />
                 </div>
 
-                <TogglePanel styles={styles} handleEntrepriseSubmit={(e) => handleEntrepriseSubmit(e, entrepriseData, setActive, none, setNone)} />
+                <TogglePanel styles={styles} handleEntrepriseSubmit={(e) => handleEntrepriseSubmit(e, setActive, active, none, setNone)} />
             </div>
         </div>
     )

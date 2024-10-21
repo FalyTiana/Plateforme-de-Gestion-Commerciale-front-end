@@ -1,89 +1,188 @@
-.container{
-    margin-top: 36px;
-    padding-bottom: 36px;
-    background: var(--light);
-    width: 100%;
-    min-width: 296px;
-    flex-grow: 1;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+.container {
+  margin-top: 36px;
+  padding-bottom: 36px;
+  background: var(--light);
+  width: 100%;
+  min-width: 296px;
+  flex-grow: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-    text-align: center;
-    font-size: 2rem;
-    margin: 20px 0;
-    color: var(--dark);
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+  color: var(--dark);
 }
 
 
 /*  */
 
-.form{
-    color: var(--dark);
-    padding: 15px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    gap: 20px;
-    
+.form {
+  color: var(--dark);
+  padding: 25px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 20px;
 }
 
 .formheader {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  color: var(--dark);
+  margin: 0 auto;
+  justify-content: center;
+  align-items: stretch;
+}
+
+
+.imageContenaire {
+  width: 100%;
+  max-width: 300px;
+  min-width: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  justify-content: start;
+  align-items: center;
+}
+
+.catacterisque{
+  overflow-x: auto;
+}
+
+.catacterisque div{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+
+}
+
+.catacterisque input{
+  width: 150px !important;
+}
+
+
+.form select,
+.form input {
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+/* .form select{
+  width: ;
+} */
+
+.selectContainer{
+  text-align: center;
+  width: fit-content;
+}
+
+.priceContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  width: 100%;
+}
+
+@media (width < 600px) {
+  .priceContainer{
     flex-wrap: wrap;
-    gap: 20px;
-    width: 100%;
-    color: var(--dark);
-    padding: 15px;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: stretch;
-    max-width: 800px;
   }
+}
+
+.priceContainer div{
+  width: 100%;
+}
 
 
-  .imageContenaire{
-    width: 100%;
-    max-width: 300px;
-    min-width: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.form select::placeholder,
+.form input::placeholder {
+  color: var(--input-placeholder-color)
+}
 
-  
+.form label {
+  padding: 0 4px;
+  font-weight: bold;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+}
 
-  .imageContenaire img{
-    width: 100%;
-    border-radius: 5%;
-    object-fit: contain;
-    height: auto;
-  }
+.imageLabel{
+  flex-direction: column;
+  cursor: pointer;
+}
 
-  .rightImage{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 15px;
-    margin-left: 15px;
-    flex-grow: 1;
-  }
-  
-  label {
+input[type="file"]{
+  display: none;
+}
+
+.videLabelImage {
+  position: relative;
+}
+
+.videLabelImage span{
+  font-weight: 400;
+  position: absolute;
+  color: var(--input-placeholder-color);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+}
+
+.imageContenaire img {
+  width: 100%;
+  height: auto;
+  border-radius: 5%;
+  object-fit: contain;
+  height: auto;
+}
+
+.rightImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 15px;
+  margin-left: 15px;
+  flex-grow: 1;
+}
+
+/* label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: var(--dark);
-  }
-  
-  input[type="text"],
+  } */
+
+/* input[type="text"],
   input[type="number"],
   select {
     width: 100%;
@@ -96,26 +195,34 @@
   input[type="file"] {
     padding: 8px;
     display: inline;
-  }
-  
-  .editor {
-    height: 200px;
-    width: 100%;
-    min-height: 100px;
-    margin-top: 10px;
-  }
-  
-  .submitButton {
-    margin-top: 30px;
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .submitButton:hover {
-    background-color: #45a049;
-  }
+  } */
+
+.editor {
+  height: 200px;
+  width: 100%;
+  color:var(--dark) ;
+  border: none;
+  height: fit-content;
+  min-height: 100px;
+  margin-top: 10px;
+}
+
+.editor::placeholder{
+  color: var(--input-placeholder-color);
+}
+
+.submitButton {
+  margin: 0 auto;
+  margin-top: 30px;
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #45a049;
+}
