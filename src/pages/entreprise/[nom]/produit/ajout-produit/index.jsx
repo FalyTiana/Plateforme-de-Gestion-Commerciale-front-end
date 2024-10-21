@@ -215,7 +215,7 @@ function AddProduct() {
                         />
                     </div >
 
-                    <div className={styles.formGroup}>
+                    <div className={styles.formGroupD}>
                         <DynamicForm/>
                     </div>
 

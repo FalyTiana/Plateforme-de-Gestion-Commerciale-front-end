@@ -226,3 +226,7 @@ input[type="file"]{
 .submitButton:hover {
   background-color: #45a049;
 }
+
+.formGroupD{
+  overflow-x: auto;
+}

@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
+import styles from './DynamicForm.module.css'
+import { FiTrash, FiTrash2 } from 'react-icons/fi';
 
 const DynamicForm = () => {
     const [columns, setColumns] = useState([]); // Initialisé à vide
@@ -7,19 +9,19 @@ const DynamicForm = () => {
 
     // Ajouter une nouvelle colonne avec un id unique et un label vide
     const addColumn = () => {
-    if (data.length === 0) {
-        addRow(); // Ajouter une ligne si aucune ligne n'existe
-    }
-    const newId = columns.length > 0 ? columns[columns.length - 1].id + 1 : 1; // générer un id unique
-    setColumns([...columns, { id: newId, label: '' }]);
+        if (data.length === 0) {
+            addRow(); // Ajouter une ligne si aucune ligne n'existe
+        }
+        const newId = columns.length > 0 ? columns[columns.length - 1].id + 1 : 1; // générer un id unique
+        setColumns([...columns, { id: newId, label: '' }]);
 
-    // Ajouter une nouvelle colonne vide à chaque ligne existante
-    const updatedData = data.map((row) => ({ ...row, [newId]: '' }));
-    setData(updatedData);
-    if (data.length === 0) {
-        addRow(); // Ajouter une ligne si aucune ligne n'existe
-    }
-};
+        // Ajouter une nouvelle colonne vide à chaque ligne existante
+        const updatedData = data.map((row) => ({ ...row, [newId]: '' }));
+        setData(updatedData);
+        if (data.length === 0) {
+            addRow(); // Ajouter une ligne si aucune ligne n'existe
+        }
+    };
 
 
     // Supprimer une colonne spécifique
@@ -71,8 +73,8 @@ const DynamicForm = () => {
     };
 
     return (
-        <div>
-            <div>
+        <div className={styles.container}>
+            <div className={styles.caractContainer}>
                 <label>Caractéristiques :</label>
                 {columns.length === 0 && <p>{'Aucune colonne. Cliquez sur "Ajouter une Colonne" pour commencer.'}</p>}
                 <table>
@@ -82,14 +84,17 @@ const DynamicForm = () => {
                                 <tr>
                                     {columns.map((column, colIndex) => (
                                         <th key={column.id}>
-                                            <input
-                                                type="text"
-                                                value={column.label} // saisir le label ici
-                                                onChange={(e) => handleLabelChange(colIndex, e.target.value)}
-                                            />
-                                            <button onClick={() => removeColumn(column.id)}>
-                                                Supprimer Colonne
-                                            </button>
+                                            <div>
+                                                <input
+                                                    type="text"
+                                                    value={column.label} // saisir le label ici
+                                                    onChange={(e) => handleLabelChange(colIndex, e.target.value)}
+                                                />
+                                                <button onClick={() => removeColumn(column.id)}>
+                                                    <FiTrash2 />
+                                                </button>
+                                            </div>
+
                                         </th>
                                     ))}
                                 </tr>
@@ -97,7 +102,7 @@ const DynamicForm = () => {
                             <tbody>
                                 {data.map((row, rowIndex) => (
                                     <tr key={rowIndex}>
-                                        {columns.map((column, colIndex) => (
+                                        {columns.map((column) => (
                                             <td key={column.id}>
                                                 <input
                                                     type="text"
@@ -109,9 +114,14 @@ const DynamicForm = () => {
                                             </td>
                                         ))}
                                         <td>
-                                            <button onClick={() => removeRow(rowIndex)}>
-                                                Supprimer Ligne
-                                            </button>
+                                            {rowIndex >= 1 &&
+                                                <div>
+                                                    <input type="number" placeholder='Prix ajouter' />
+                                                    <button onClick={() => removeRow(rowIndex)}>
+                                                        <FiTrash />
+                                                    </button>
+                                                </div>
+                                            }
                                         </td>
                                     </tr>
                                 ))}

@@ -1,0 +1,60 @@
+.container{
+    width: fit-content;
+    text-align: right;
+    overflow-x: auto;
+}
+.container td div,
+.container th div{
+    display: flex;
+    gap: 5px;
+}
+.container td div button,
+.container th div button{
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    font-size: large;
+    margin-right: 5px;
+    color: var(--error-color);
+    cursor: pointer;
+}
+
+.container th div input{
+    font-weight: bold;
+}
+/* .container .table{
+    overflow-x: scroll !important;
+} */
+
+.container input {
+    min-width: 100px;
+}
+
+.container tr div button:hover,
+.container th div button:hover{
+    transform: scale(1.05);
+}
+
+/* .caractContainer { */
+    /* overflow-x: auto; Permet le défilement horizontal */
+    /* white-space: nowrap; Empêche les lignes de se casser */
+    /* max-width: 100%; S'assure que le conteneur prend toute la largeur disponible */
+/* } */
+
+/* table { */
+    /* width: auto; Ajuste la largeur de la table au contenu */
+    /* border-collapse: collapse; Assure que les bordures du tableau sont collées */
+    /* display: inline-block; Permet de scroller horizontalement */
+/* } */
+
+/* th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    text-align: left;
+}
+
+input {
+    width: 100%; /* S'assure que les inputs prennent toute la largeur de la cellule */
+    /* box-sizing: border-box; Assure que le padding est inclus dans la largeur */
+/* }  */
