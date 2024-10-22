@@ -9,7 +9,7 @@ function PopularProductGrid() {
     const location = useLocation()
     const dispatch = useDispatch()
 
-    const products = useSelector((state) => state.products.products);
+    const products = useSelector((state) => state.products.products.slice(-4));
     const handleProductClick = (product) =>{
         navigate (`${location.pathname}/boutique/produit`, { state: {product} })
     }
