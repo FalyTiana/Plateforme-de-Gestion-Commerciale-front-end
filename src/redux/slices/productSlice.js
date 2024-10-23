@@ -32,7 +32,7 @@ const initialState = {
       category: "vetements",
       price: 60000,
       inStock: true,
-      image: "https://via.placeholder.com/250",
+      image: "https://via.placeholder.com/200",
     },
     {
       id: 5,
